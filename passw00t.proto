@@ -1,0 +1,32 @@
+message KeyList {
+    repeated Key keys = 1;
+}
+
+message Key {
+    required string id = 1;
+    required string schema = 2;
+    required bytes box_key = 3;
+    required bytes checksum = 4;
+}
+
+message LockBox {
+    required string key_id = 1;
+    optional bytes iv = 2;
+    required bytes ciphertext = 3;
+}
+
+enum BoxType {
+    BOX_LOGIN = 1;
+}
+
+message Box {
+    required BoxType box_type = 1;
+    required string label = 2;
+    optional Login login = 3;
+}
+
+message Login {
+    optional bytes password = 1;
+    optional string username = 2;
+    optional string description = 3;
+}
